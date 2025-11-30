@@ -137,7 +137,10 @@ function toggleTimer() {
 }
 
 function startTimer() {
-    if (audioCtx.state === 'suspended') audioCtx.resume();
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(err => console.error("Error resuming audio context:", err));
+    }
+    console.log("Starting timer...");
 
     isRunning = true;
     startBtn.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
