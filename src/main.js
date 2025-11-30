@@ -116,9 +116,14 @@ function updateDisplay() {
 
     // Progress Ring
     const totalTime = currentInterval.duration;
-    const progress = timeLeft / totalTime;
-    const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
-    progressCircle.style.strokeDashoffset = offset;
+    const progress = timeLeft / totalTime; // 1 (start) -> 0 (end)
+
+    // To show elapsed time (filling up):
+    // Start (progress 1): Offset 880 (Empty)
+    // End (progress 0): Offset 0 (Full)
+    const offset = progress * CIRCUMFERENCE;
+
+    progressCircle.style.strokeDashoffset = `${offset}px`;
 
     // Update dots
     const dots = document.querySelectorAll('.interval-dot');
