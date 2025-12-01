@@ -145,6 +145,10 @@ function startTimer() {
     if (audioCtx.state === 'suspended') {
         audioCtx.resume().catch(err => console.error("Error resuming audio context:", err));
     }
+
+    // Play start sound
+    playTone(880, 0.1, 'sine');
+
     console.log("Starting timer...");
 
     isRunning = true;

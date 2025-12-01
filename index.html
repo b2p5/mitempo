@@ -21,98 +21,59 @@
                     <path
                         d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
                     </path>
+    </div>
+    </div>
+    </main>
+
+    <!-- Cycles/Settings View -->
+    <section id="cycles-view" class="hidden-view overlay-view">
+        <div class="view-header">
+            <h2>Mis Rutinas</h2>
+            <button id="close-settings-btn" class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-        </nav>
+        </div>
 
-        <!-- Main Timer View -->
-        <main id="timer-view" class="active-view">
-            <div class="timer-container">
-                <div class="progress-ring">
-                    <svg class="progress-ring__svg" width="300" height="300">
-                        <circle class="progress-ring__circle--bg" stroke="rgba(255,255,255,0.1)" stroke-width="12"
-                            fill="transparent" r="140" cx="150" cy="150" />
-                        <circle class="progress-ring__circle" stroke="url(#gradient)" stroke-width="12"
-                            fill="transparent" r="140" cx="150" cy="150" stroke-dasharray="880" />
-                        <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#00E5FF" />
-                                <stop offset="100%" stop-color="#2979FF" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <div class="timer-text">
-                        <span id="time-display">00:00</span>
-                        <span id="interval-label">Preparado</span>
-                    </div>
-                </div>
+        <div class="cycles-list" id="cycles-list-container">
+            <!-- Cycles will be injected here -->
+        </div>
+
+        <button id="add-cycle-btn" class="primary-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nueva Rutina
+        </button>
+    </section>
+
+    <!-- Editor Modal -->
+    <div id="editor-modal" class="modal hidden-view">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Editar Rutina</h3>
+                <button id="close-modal-btn" class="icon-btn">✕</button>
             </div>
-
-            <div class="controls">
-                <button id="start-btn" class="fab">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="cycle-info">
-                <h3>Ciclo: <span id="cycle-name">Tabata Básico</span></h3>
-                <div class="intervals-preview" id="intervals-list">
-                    <!-- Intervals will be injected here -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="cycle-name-input">Nombre</label>
+                    <input type="text" id="cycle-name-input" placeholder="Ej. Tabata Intenso">
                 </div>
-            </div>
-        </main>
 
-        <!-- Cycles/Settings View -->
-        <section id="cycles-view" class="hidden-view overlay-view">
-            <div class="view-header">
-                <h2>Mis Rutinas</h2>
-                <button id="close-settings-btn" class="icon-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-
-            <div class="cycles-list" id="cycles-list-container">
-                <!-- Cycles will be injected here -->
-            </div>
-
-            <button id="add-cycle-btn" class="primary-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                Nueva Rutina
-            </button>
-        </section>
-
-        <!-- Editor Modal -->
-        <div id="editor-modal" class="modal hidden-view">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 id="modal-title">Editar Rutina</h3>
-                    <button id="close-modal-btn" class="icon-btn">✕</button>
+                <div class="intervals-editor" id="intervals-editor-list">
+                    <!-- Interval inputs injected here -->
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="cycle-name-input">Nombre</label>
-                        <input type="text" id="cycle-name-input" placeholder="Ej. Tabata Intenso">
-                    </div>
 
-                    <div class="intervals-editor" id="intervals-editor-list">
-                        <!-- Interval inputs injected here -->
-                    </div>
-
-                    <button id="add-interval-btn" class="secondary-btn small">+ Añadir Intervalo</button>
-                </div>
-                <div class="modal-footer">
-                    <button id="save-cycle-btn" class="primary-btn full-width">Guardar</button>
-                </div>
+                <button id="add-interval-btn" class="secondary-btn small">+ Añadir Intervalo</button>
+            </div>
+            <div class="modal-footer">
+                <button id="save-cycle-btn" class="primary-btn full-width">Guardar</button>
             </div>
         </div>
+    </div>
 
     </div>
     <script src="src/main.js" type="module"></script>
