@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTempo</title>
+    <meta name="description" content="Temporizador de intervalos minimalista">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <h1>MiTempo</h1>
+            <button id="settings-btn" aria-label="Configuración">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Timer View -->
+        <main id="timer-view">
+            <div class="timer-container">
+                <div class="cycle-name" id="cycle-name">Tabata Básico</div>
+
+                <!-- Progress Circle -->
+                <div class="progress-ring-container">
+                    <svg class="progress-ring" width="300" height="300">
+                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="transparent" r="140" cx="150" cy="150"/>
+                        <circle class="progress-ring__circle" stroke="#00E5FF" stroke-width="8" fill="transparent" r="140" cx="150" cy="150" stroke-dasharray="879.6" stroke-dashoffset="879.6"/>
+                    </svg>
+                    <div class="time-display" id="time-display">00:20</div>
+                </div>
+
+                <div class="interval-label" id="interval-label">Trabajo</div>
+
+                <!-- Intervals Preview -->
+                <div class="intervals-list" id="intervals-list">
+                    <!-- Interval dots will be injected here -->
+                </div>
+
+                <!-- Start Button -->
+                <button id="start-btn" class="start-btn">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </main>
+
+    <!-- Cycles/Settings View -->
+    <section id="cycles-view" class="hidden-view overlay-view">
+        <div class="view-header">
+            <h2>Mis Rutinas</h2>
+            <button id="close-settings-btn" class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cycles-list" id="cycles-list-container">
+            <!-- Cycles will be injected here -->
+        </div>
+
+        <button id="add-cycle-btn" class="primary-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nueva Rutina
+        </button>
+    </section>
+
+    <!-- Editor Modal -->
+    <div id="editor-modal" class="modal hidden-view">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Editar Rutina</h3>
+                <button id="close-modal-btn" class="icon-btn">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="cycle-name-input">Nombre</label>
+                    <input type="text" id="cycle-name-input" placeholder="Ej. Tabata Intenso">
+                </div>
+
+                <div class="intervals-editor" id="intervals-editor-list">
+                    <!-- Interval inputs injected here -->
+                </div>
+
+                <button id="add-interval-btn" class="secondary-btn small">+ Añadir Intervalo</button>
+            </div>
+            <div class="modal-footer">
+                <button id="save-cycle-btn" class="primary-btn full-width">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="src/main.js" type="module"></script>
+</body>
+
+</html>

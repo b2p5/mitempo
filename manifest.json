@@ -1,0 +1,20 @@
+{
+  "name": "MiTempo",
+  "short_name": "MiTempo",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192.png?text=MiTempo",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512.png?text=MiTempo",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
