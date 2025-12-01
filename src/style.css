@@ -129,44 +129,6 @@ button {
 .progress-ring__circle {
     transition: stroke-dashoffset 0.1s linear;
     transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-    stroke-dasharray: 880;
-    stroke-dashoffset: 0;
-    stroke-linecap: round;
-}
-
-.timer-text {
-    position: absolute;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-#time-display {
-    font-size: 4rem;
-    font-weight: 300;
-    font-variant-numeric: tabular-nums;
-}
-
-#interval-label {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Controls */
-.controls {
-    display: flex;
-    gap: 20px;
-    z-index: 5;
-    margin-top: 20px;
-}
-
-.fab {
-    width: 80px;
-    height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     display: flex;
